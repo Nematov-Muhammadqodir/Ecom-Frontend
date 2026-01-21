@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { useState } from "react";
 import AppContext from "../Context/Context";
 import axios from "../axios";
-// import UpdateProduct from "./UpdateProduct";
+import UpdateProduct from "./UpdateProduct";
 const Product = () => {
   const { id } = useParams();
   const { data, addToCart, removeFromCart, cart, refreshData } =
@@ -11,6 +11,7 @@ const Product = () => {
   const [product, setProduct] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
+  console.log("Product", product);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -105,7 +106,7 @@ const Product = () => {
               <i> {new Date(product.releaseDate).toLocaleDateString()}</i>
             </p>
           </div>
-          {/* <div className="update-button ">
+          <div className="update-button ">
             <button
               className="btn btn-primary"
               type="button"
@@ -113,7 +114,7 @@ const Product = () => {
             >
               Update
             </button>
-        
+            {/* <UpdateProduct product={product} onUpdate={handleUpdate} /> */}
             <button
               className="btn btn-primary"
               type="button"
@@ -121,7 +122,7 @@ const Product = () => {
             >
               Delete
             </button>
-          </div> */}
+          </div>
         </div>
       </div>
     </>
